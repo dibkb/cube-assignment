@@ -13,6 +13,7 @@
 }
 .left-section {
   background-color: var(--background);
+  overflow-y: auto;
 }
 .right-section {
   background-color: var(--background-two);
