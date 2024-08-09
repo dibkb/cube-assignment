@@ -1,0 +1,9 @@
+:root {
+  /* Colors */
+  --background: #fafafa;
+  --background-two: #f4f4f5;
+  /* Fonts */
+  --font-size-heading: 2rem;
+  /* Spacing */
+  --heading-space: 4rem;
+}

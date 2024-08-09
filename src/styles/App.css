@@ -1,0 +1,19 @@
+@import url("./variables.css");
+.heading {
+  font-size: var(--font-size-heading);
+  height: var(--heading-space);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.main-grid {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  height: calc(100vh - var(--heading-space));
+}
+.left-section {
+  background-color: var(--background);
+}
+.right-section {
+  background-color: var(--background-two);
+}
