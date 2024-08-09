@@ -24,13 +24,12 @@
 }
 
 .customer-card-selected {
-  background-color: #27272a;
+  background-color: var(--background-card-hover);
 }
 
 /* Typography */
 .customer-name {
   font-size: var(--font-customer-heading);
-  color: white;
 }
 
 .customer-title {
@@ -45,10 +44,11 @@
 
 /* Overrides for Selected Card */
 .customer-card-selected .customer-name,
-.customer-card-selected .customer-title {
+.customer-card:hover .customer-name {
   color: white;
 }
 
-.customer-card-selected .customer-title {
+.customer-card-selected .customer-title,
+.customer-card:hover .customer-title {
   color: #a1a1aa;
 }
