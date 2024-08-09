@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useRef } from "react";
 import "../styles/customer-image.css";
+
 export const CustomerImage = () => {
   const imageRef = useRef<HTMLImageElement>(null);
   const updateImage = useCallback(() => {
@@ -16,12 +17,13 @@ export const CustomerImage = () => {
     <img
       ref={imageRef}
       className="image-container"
-      alt=""
+      alt="random-image"
       src={getRandomImage()}
     />
   );
 };
 
+// get-random image
 function getRandomImage() {
   return `https://picsum.photos/600/600?random=${Math.random()}`;
 }

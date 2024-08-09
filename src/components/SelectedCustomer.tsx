@@ -10,12 +10,20 @@ export const SelectedCustomer = () => {
       <CustomerImage key={key ? key + id : id} />
     ));
   }, [selectedCustomer]);
-  return (
-    <div className="selected-customer-container">
-      <h3 className="selected-customer-name">{selectedCustomer?.name}</h3>
-      <h6 className="selected-customer-address">{selectedCustomer?.address}</h6>
-      <p className="selected-customer-title">{selectedCustomer?.title}</p>
-      <main className="customer-image-container">{imageRender}</main>
-    </div>
-  );
+  let content;
+  if (selectedCustomer) {
+    content = (
+      <div className="selected-customer-container">
+        <h3 className="selected-customer-name">{selectedCustomer?.name}</h3>
+        <h6 className="selected-customer-address">
+          {selectedCustomer?.address}
+        </h6>
+        <p className="selected-customer-title">{selectedCustomer?.title}</p>
+        <main className="customer-image-container">{imageRender}</main>
+      </div>
+    );
+  } else {
+    content = <div className="selected-customer-empty">Select a customer</div>;
+  }
+  return content;
 };
