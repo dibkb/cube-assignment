@@ -1,3 +1,4 @@
+import { CustomerList } from "./components/CustomerList";
 import "./styles/App.css";
 function App() {
   return (
@@ -5,7 +6,9 @@ function App() {
       <h1 className="heading">This is the heading</h1>
       <section className="main-grid">
         {/* left side */}
-        <div className="left-section"></div>
+        <div className="left-section">
+          <CustomerList />
+        </div>
         {/* right side */}
         <div className="right-section"></div>
       </section>

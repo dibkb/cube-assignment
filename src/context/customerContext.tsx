@@ -1,13 +1,20 @@
-import React, { createContext, useState, ReactNode } from "react";
+import React, {
+  createContext,
+  useState,
+  ReactNode,
+  Dispatch,
+  SetStateAction,
+} from "react";
+import { Customer } from "../types/Customer";
 
 interface CustomerContext {
-  value: string;
-  setValue: (value: string) => void;
+  customer: Customer[];
+  setCustomer: Dispatch<SetStateAction<Customer[]>>;
 }
 
 const defaultState: CustomerContext = {
-  value: "",
-  setValue: () => {},
+  customer: [],
+  setCustomer: () => {},
 };
 
 export const CustomerContext = createContext<CustomerContext>(defaultState);
@@ -19,10 +26,10 @@ interface CustomerContextProps {
 export const CustomerContextProvider: React.FC<CustomerContextProps> = ({
   children,
 }) => {
-  const [value, setValue] = useState<string>(defaultState.value);
+  const [customer, setCustomer] = useState<Customer[]>(defaultState.customer);
 
   return (
-    <CustomerContext.Provider value={{ value, setValue }}>
+    <CustomerContext.Provider value={{ customer, setCustomer }}>
       {children}
     </CustomerContext.Provider>
   );
