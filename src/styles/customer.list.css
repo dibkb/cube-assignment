@@ -1,0 +1,9 @@
+.customer-list-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+.customer-card {
+  padding: 1rem;
+  display: flex;
+}

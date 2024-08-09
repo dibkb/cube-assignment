@@ -6,6 +6,7 @@ import React, {
   SetStateAction,
 } from "react";
 import { Customer } from "../types/Customer";
+import { makeCustomers } from "../data/mockCustomer";
 
 interface CustomerContext {
   customer: Customer[];
@@ -13,7 +14,7 @@ interface CustomerContext {
 }
 
 const defaultState: CustomerContext = {
-  customer: [],
+  customer: makeCustomers(1000),
   setCustomer: () => {},
 };
 
