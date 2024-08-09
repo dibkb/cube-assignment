@@ -1,5 +1,5 @@
 // CSS files
-import "../styles/customer.list.css";
+import "../styles/customer.css";
 import { useCustomerContext } from "../hooks/useCustomerContext";
 import { Customer } from "./Customer";
 

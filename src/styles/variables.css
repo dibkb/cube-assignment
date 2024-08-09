@@ -2,8 +2,11 @@
   /* Colors */
   --background: #fafafa;
   --background-two: #f4f4f5;
+  --background-card-hover: #e4e4e7;
+  --card-secondary-font: #52525b;
   /* Fonts */
   --font-size-heading: 2rem;
+  --font-customer-heading: 1.5rem;
   /* Spacing */
   --heading-space: 4rem;
 }
