@@ -11,8 +11,8 @@ import { makeCustomers } from "../data/mockCustomer";
 interface CustomerContext {
   customer: Customer[];
   setCustomer: Dispatch<SetStateAction<Customer[]>>;
-  selectedCustomer: Customer["name"] | undefined;
-  setSelectedCustomer: Dispatch<SetStateAction<Customer["name"] | undefined>>;
+  selectedCustomer: Customer | undefined;
+  setSelectedCustomer: Dispatch<SetStateAction<Customer | undefined>>;
 }
 
 const defaultState: CustomerContext = {
@@ -32,7 +32,7 @@ export const CustomerContextProvider: React.FC<CustomerContextProps> = ({
   children,
 }) => {
   const [customer, setCustomer] = useState<Customer[]>(defaultState.customer);
-  const [selectedCustomer, setSelectedCustomer] = useState<Customer["name"]>();
+  const [selectedCustomer, setSelectedCustomer] = useState<Customer>();
   return (
     <CustomerContext.Provider
       value={{ customer, setCustomer, selectedCustomer, setSelectedCustomer }}
