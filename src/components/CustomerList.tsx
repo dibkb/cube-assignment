@@ -5,6 +5,8 @@ import { Customer } from "./Customer";
 
 export const CustomerList = () => {
   const { customer } = useCustomerContext();
-  const renderCustomers = customer.map((cust) => <Customer {...cust} />);
+  const renderCustomers = customer.map((cust) => (
+    <Customer key={cust.name} {...cust} />
+  ));
   return <div className="customer-list-container">{renderCustomers}</div>;
 };
