@@ -1,6 +1,6 @@
 // CSS file
-import { useCustomerContext } from "../hooks/useCustomerContext";
 import "../styles/customer.css";
+import { useCustomerContext } from "../hooks/useCustomerContext";
 import { type Customer as CustomerType } from "../types/Customer";
 export const Customer = (customer: CustomerType) => {
   const { title, name } = customer;
