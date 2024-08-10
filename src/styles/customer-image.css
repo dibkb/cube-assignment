@@ -3,7 +3,7 @@
   height: var(--image-container);
   width: full !important;
   border-radius: 1rem;
-  background: #000;
+  background: var(--image-placeholder);
 }
 
 @media (max-width: 650px) {

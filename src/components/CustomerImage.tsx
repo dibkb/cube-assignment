@@ -3,7 +3,7 @@ import "../styles/customer-image.css";
 import React, { useCallback, useEffect, useRef } from "react";
 
 export const CustomerImage = () => {
-  const imageRef = useRef<HTMLImageElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
 
   // Function to get a random image URL
   const getRandomImage = useCallback(() => {
@@ -25,7 +25,7 @@ export const CustomerImage = () => {
 
   return (
     <div
-      // ref={imageRef}
+      ref={imageRef}
       className="image-container"
       style={{
         backgroundImage: `url(${getRandomImage()})`,
