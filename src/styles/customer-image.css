@@ -1,5 +1,6 @@
+@import url(./variables.css);
 .image-container {
-  height: 300px;
+  height: var(--image-container);
   width: full !important;
   border-radius: 1rem;
 }

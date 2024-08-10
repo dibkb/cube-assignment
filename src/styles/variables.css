@@ -4,9 +4,12 @@
   --background-two: #f4f4f5;
   --background-card-hover: #27272a;
   --card-secondary-font: #52525b;
+  --customer-card-hover: #a1a1aa;
   /* Fonts */
   --font-size-heading: 2rem;
   --font-customer-heading: 1.5rem;
+  --line-clamp: 5;
   /* Spacing */
   --heading-space: 4rem;
+  --image-container: 18rem;
 }

@@ -18,7 +18,7 @@
   padding: 1rem;
   cursor: pointer;
   border-radius: 1rem;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.1s ease;
 }
 
 .customer-card:hover {
@@ -38,13 +38,12 @@
   color: var(--card-secondary-font);
   line-height: 1.2rem;
   display: -webkit-box;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: var(--line-clamp);
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 
-/* Overrides for Selected Card */
 .customer-card-selected .customer-name,
 .customer-card:hover .customer-name {
   color: white;
@@ -52,5 +51,5 @@
 
 .customer-card-selected .customer-title,
 .customer-card:hover .customer-title {
-  color: #a1a1aa;
+  color: var(--customer-card-hover);
 }
