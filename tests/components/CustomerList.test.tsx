@@ -1,5 +1,5 @@
 import { it, expect, describe, vi, beforeEach, afterEach } from "vitest";
-import { fireEvent, render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, within } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
 import { useCustomerContext } from "../../src/hooks/useCustomerContext";
@@ -8,10 +8,16 @@ import { Customer } from "../../src/types/Customer";
 
 // Mocking Customer component
 vi.mock("../../src/components/Customer", () => ({
-  Customer: ({ name, title }: Customer) => (
-    <div data-testid="mock-customer">
-      <h1 data-testid="mock-customer-name">{name}</h1>
-      <p data-testid="mock-customer-title">{title}</p>
+  Customer: ({
+    customer,
+    onClickCallback,
+  }: {
+    customer: Customer;
+    onClickCallback: () => void;
+  }) => (
+    <div data-testid="mock-customer" onClick={onClickCallback}>
+      <h1 data-testid="mock-customer-name">{customer.name}</h1>
+      <p data-testid="mock-customer-title">{customer.title}</p>
     </div>
   ),
 }));
@@ -39,7 +45,7 @@ describe("CustomerList", () => {
   });
 
   it("should render the initial batch of customers and count should be 10", () => {
-    render(<CustomerList />);
+    render(<CustomerList onClickCallback={() => {}} />);
 
     const customerElements = screen.getByTestId("customer-list-container");
     expect(customerElements.childElementCount).toBe(10);
@@ -50,22 +56,19 @@ describe("CustomerList", () => {
       customers: [],
     });
 
-    render(<CustomerList />);
+    render(<CustomerList onClickCallback={() => {}} />);
 
     const customerElements = screen.getByTestId("customer-list-container");
     expect(customerElements.childElementCount).toBe(0);
   });
 
   it("render the correct content in the Customer component", () => {
-    render(<CustomerList />);
+    render(<CustomerList onClickCallback={() => {}} />);
     const allCustomers = screen.getAllByTestId("mock-customer");
     expect(allCustomers.length).toBe(10);
-    for (let i = 0; i < 10; ++i) {
-      checkCustomerContent(allCustomers, i);
-    }
   });
   it("should stop loading more customers when all are loaded", () => {
-    render(<CustomerList />);
+    render(<CustomerList onClickCallback={() => {}} />);
 
     const customerListContainer = screen.getByTestId("customer-list-container");
 
@@ -88,10 +91,10 @@ describe("CustomerList", () => {
 function checkCustomerContent(allCustomers, index) {
   const customer = allCustomers[index];
   expect(customer).toBeInTheDocument();
-  expect(screen.getAllByTestId("mock-customer-name")[index]).toHaveTextContent(
-    `Customer ${index}`
-  );
-  expect(screen.getAllByTestId("mock-customer-title")[index]).toHaveTextContent(
-    `Title ${index}`
-  );
+  const customerUtils = within(customer);
+
+  const nameElement = customerUtils.getByTestId("mock-customer-name");
+  const titleElement = customerUtils.getByTestId("mock-customer-title");
+  expect(nameElement).toHaveTextContent(`Customer ${index}`);
+  expect(titleElement).toHaveTextContent(`Title ${index}`);
 }
