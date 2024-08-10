@@ -1,4 +1,5 @@
 @import url("./variables.css");
+
 /* Default styles */
 .heading {
   font-size: var(--font-size-heading);
@@ -12,14 +13,13 @@
   display: grid;
   grid-template-columns: 1fr 3fr;
   height: calc(100vh - var(--heading-space));
-  transition: grid-template-columns 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .left-section {
   background-color: var(--background);
   overflow-y: auto;
   position: relative;
-  transition: transform 0.3s ease;
 }
 
 .right-section {
@@ -27,8 +27,7 @@
 }
 
 .toggle-button {
-  display: none;
-  position: absolute;
+  position: fixed;
   top: 1rem;
   left: 1rem;
   cursor: pointer;
@@ -39,26 +38,35 @@
   font-size: 1rem;
   border-radius: 0.5rem;
 }
+
 .toggle-button:hover {
   background-color: var(--background-card-hover);
   border-color: var(--background-card-hover);
   color: white;
 }
+
 @media (max-width: 768px) {
   .main-grid {
     grid-template-columns: 1fr;
   }
+
   .left-section {
+    position: fixed;
+    top: var(--heading-space);
+    left: 0;
+    right: 0;
+    bottom: 0;
     z-index: 100;
-    position: absolute;
     transform: translateX(-100%);
+    transition: transform 0.3s ease;
   }
 
-  .toggle-button {
-    display: block;
-  }
-  .left-section.open {
+  .main-grid.left-open .left-section {
     transform: translateX(0);
+  }
+
+  .main-grid.left-open .right-section {
+    display: none;
   }
 }
 
