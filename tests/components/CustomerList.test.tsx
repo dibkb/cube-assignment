@@ -1,5 +1,5 @@
 import { it, expect, describe, vi, beforeEach, afterEach } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import React from "react";
 import { useCustomerContext } from "../../src/hooks/useCustomerContext";
@@ -63,6 +63,25 @@ describe("CustomerList", () => {
     for (let i = 0; i < 10; ++i) {
       checkCustomerContent(allCustomers, i);
     }
+  });
+  it("should stop loading more customers when all are loaded", () => {
+    render(<CustomerList />);
+
+    const customerListContainer = screen.getByTestId("customer-list-container");
+
+    // Simulate multiple scrolls to bottom twice
+    // 10 loaded initially
+    // scroll to bottom twice ---should load 10+10+10=30
+    fireEvent.scroll(customerListContainer, {
+      target: { scrollTop: customerListContainer.scrollHeight },
+    });
+    fireEvent.scroll(customerListContainer, {
+      target: { scrollTop: customerListContainer.scrollHeight },
+    });
+
+    const customerElements = screen.getAllByTestId("mock-customer");
+    expect(customerElements.length).toBe(30);
+    checkCustomerContent(customerElements, 29);
   });
 });
 
