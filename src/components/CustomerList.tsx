@@ -10,9 +10,9 @@ export const CustomerList = () => {
   const { customer } = useCustomerContext();
   // store the visible customers
   const [visibleCustomers, setVisibleCustomers] = useState(
-    customer.slice(0, 10)
+    customer?.slice(0, 10)
   );
-  const [hasMore, setHasMore] = useState(visibleCustomers.length === 10);
+  const [hasMore, setHasMore] = useState(visibleCustomers?.length === 10);
   const loadMoreCustomers = useCallback(() => {
     const currLength = visibleCustomers.length;
     const nextBatch = customer.slice(currLength, currLength + 10);
@@ -38,10 +38,14 @@ export const CustomerList = () => {
         curr.removeEventListener("scroll", handleScroll);
       };
     }
-  }, [visibleCustomers.length, hasMore, loadMoreCustomers]);
+  }, [visibleCustomers, hasMore, loadMoreCustomers]);
   return (
-    <div className="customer-list-container" ref={customerListRef}>
-      {visibleCustomers.map((cust) => (
+    <div
+      className="customer-list-container"
+      data-testid="customer-list-container"
+      ref={customerListRef}
+    >
+      {visibleCustomers?.map((cust) => (
         <Customer key={cust.name} {...cust} />
       ))}
     </div>
