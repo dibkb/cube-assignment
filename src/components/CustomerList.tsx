@@ -5,7 +5,11 @@ import { useCustomerContext } from "../hooks/useCustomerContext";
 import { Customer } from "./Customer";
 import { useCallback, useEffect, useRef, useState } from "react";
 
-export const CustomerList = () => {
+interface CustomerList {
+  onClickCallback: () => void;
+}
+
+export const CustomerList = ({ onClickCallback }: CustomerList) => {
   const customerListRef = useRef<HTMLDivElement>(null);
   const { customer } = useCustomerContext();
   // store the visible customers
@@ -50,7 +54,11 @@ export const CustomerList = () => {
       ref={customerListRef}
     >
       {visibleCustomers?.map((cust) => (
-        <Customer key={cust.name} {...cust} />
+        <Customer
+          key={cust.name}
+          customer={cust}
+          onClickCallback={onClickCallback}
+        />
       ))}
     </div>
   );

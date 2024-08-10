@@ -9,6 +9,10 @@ function App() {
   const toggleSidebar = () => {
     setLeftSectionOpen((prevState) => !prevState);
   };
+  // onclose left section
+  const closeLeftSection = () => {
+    setLeftSectionOpen(false);
+  };
   return (
     <main className="main-container">
       <h1 className="heading">Cube Assignment</h1>
@@ -17,13 +21,13 @@ function App() {
           className={`left-section ${isLeftSectionOpen ? "open" : ""}`}
           data-testid="left-section"
         >
-          <CustomerList />
+          <CustomerList onClickCallback={closeLeftSection} />
         </div>
         <div className="right-section" data-testid="right-section">
           <SelectedCustomer />
         </div>
         <button className="toggle-button" onClick={toggleSidebar}>
-          {isLeftSectionOpen ? "Close" : "Open"} Sidebar
+          {isLeftSectionOpen ? "Close" : "Open"} Left
         </button>
       </section>
     </main>

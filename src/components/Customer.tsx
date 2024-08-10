@@ -4,13 +4,18 @@ import "../styles/customer.css";
 import { useCustomerContext } from "../hooks/useCustomerContext";
 import { type Customer as CustomerType } from "../types/Customer";
 
-export const Customer = (customer: CustomerType) => {
+interface Customer {
+  customer: CustomerType;
+  onClickCallback: () => void;
+}
+export const Customer = ({ customer, onClickCallback }: Customer) => {
   const { title, name } = customer;
   const { setSelectedCustomer, selectedCustomer } = useCustomerContext();
 
   // handle card click
   function handleClick() {
     setSelectedCustomer(customer);
+    onClickCallback();
   }
   // determine if this customer is selected
   const isSelected = name === selectedCustomer?.name;

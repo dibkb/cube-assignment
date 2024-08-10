@@ -33,8 +33,17 @@
   left: 1rem;
   cursor: pointer;
   z-index: 1000;
+  padding: 0.25rem 0.5rem;
+  background-color: transparent;
+  border: 1px solid var(--customer-card-hover);
+  font-size: 1rem;
+  border-radius: 0.5rem;
 }
-
+.toggle-button:hover {
+  background-color: var(--background-card-hover);
+  border-color: var(--background-card-hover);
+  color: white;
+}
 @media (max-width: 768px) {
   .main-grid {
     grid-template-columns: 1fr;
