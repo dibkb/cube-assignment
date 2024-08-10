@@ -25,10 +25,10 @@ export const CustomerImage = () => {
 
   return (
     <img
-      ref={imageRef}
+      // ref={imageRef}
       className="image-container"
       alt="random-image"
-      src={getRandomImage()}
+      // src={getRandomImage()}
     />
   );
 };

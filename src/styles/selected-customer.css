@@ -31,3 +31,9 @@
   justify-content: center;
   align-items: center;
 }
+/* Styles for small screens */
+@media (max-width: 650px) {
+  .customer-image-container {
+    grid-template-columns: 2fr;
+  }
+}
