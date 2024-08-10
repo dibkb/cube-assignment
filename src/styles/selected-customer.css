@@ -33,6 +33,10 @@
 }
 /* Styles for small screens */
 @media (max-width: 650px) {
+  .selected-customer-container {
+    gap: 1rem;
+    padding: 1rem;
+  }
   .customer-image-container {
     grid-template-columns: 2fr;
   }
