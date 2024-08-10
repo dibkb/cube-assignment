@@ -1,5 +1,6 @@
 import { Customer } from "../types/Customer";
 
+// mock customer data
 function makeCustomers(total: number = 1000) {
   const res: Customer[] = [];
   for (let i = 0; i < total; ++i) {

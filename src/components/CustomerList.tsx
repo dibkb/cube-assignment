@@ -13,6 +13,8 @@ export const CustomerList = () => {
     customer?.slice(0, 10)
   );
   const [hasMore, setHasMore] = useState(visibleCustomers?.length === 10);
+
+  // load more customers handler
   const loadMoreCustomers = useCallback(() => {
     const currLength = visibleCustomers.length;
     const nextBatch = customer.slice(currLength, currLength + 10);
@@ -24,6 +26,7 @@ export const CustomerList = () => {
   useEffect(() => {
     const curr = customerListRef.current;
     if (curr) {
+      // handle scroll
       const handleScroll = () => {
         if (
           curr.scrollTop + curr.clientHeight >= curr.scrollHeight - 1 &&
@@ -39,6 +42,7 @@ export const CustomerList = () => {
       };
     }
   }, [visibleCustomers, hasMore, loadMoreCustomers]);
+
   return (
     <div
       className="customer-list-container"
