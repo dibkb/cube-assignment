@@ -27,6 +27,7 @@
 }
 
 .toggle-button {
+  display: none;
   position: fixed;
   top: 1rem;
   left: 1rem;
@@ -46,6 +47,9 @@
 }
 
 @media (max-width: 768px) {
+  .toggle-button {
+    display: block;
+  }
   .main-grid {
     grid-template-columns: 1fr;
   }
@@ -73,6 +77,5 @@
 @media (max-width: 480px) {
   .heading {
     font-size: 1.5rem;
-    height: auto;
   }
 }
