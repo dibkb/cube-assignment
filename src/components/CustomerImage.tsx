@@ -13,7 +13,7 @@ export const CustomerImage = () => {
   // update image element handler
   const updateImage = useCallback(() => {
     if (imageRef.current) {
-      imageRef.current.src = getRandomImage();
+      imageRef.current.style.backgroundImage = `url(${getRandomImage()})`;
     }
   }, [getRandomImage]);
 
@@ -24,11 +24,15 @@ export const CustomerImage = () => {
   }, [updateImage]);
 
   return (
-    <img
+    <div
       // ref={imageRef}
       className="image-container"
-      alt="random-image"
-      // src={getRandomImage()}
+      style={{
+        backgroundImage: `url(${getRandomImage()})`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
     />
   );
 };
