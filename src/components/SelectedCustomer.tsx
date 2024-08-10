@@ -1,3 +1,4 @@
+import React from "react";
 import "../styles/selected-customer.css";
 import { useCustomerContext } from "../hooks/useCustomerContext";
 import { CustomerImage } from "./CustomerImage";

@@ -1,3 +1,4 @@
+import React from "react";
 // CSS file
 import "../styles/customer.css";
 import { useCustomerContext } from "../hooks/useCustomerContext";
